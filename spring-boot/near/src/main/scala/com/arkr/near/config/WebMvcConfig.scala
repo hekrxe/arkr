@@ -1,4 +1,4 @@
-package com.arkr.demos.near.config
+package com.arkr.near.config
 
 import java.util
 

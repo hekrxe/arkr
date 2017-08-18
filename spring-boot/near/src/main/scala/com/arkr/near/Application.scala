@@ -1,8 +1,8 @@
-package com.arkr.demos.near
+package com.arkr.near
 
 import java.util
 
-import com.arkr.demos.near.config.ApplicationConfig
+import com.arkr.near.config.ApplicationConfig
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 import org.springframework.boot.autoconfigure.{EnableAutoConfiguration, SpringBootApplication}

@@ -1,4 +1,4 @@
-package com.arkr.demos.near.global
+package com.arkr.near.global
 
 import javax.servlet.http.HttpServletRequest
 

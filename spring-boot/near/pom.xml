@@ -114,7 +114,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.arkr.demos.near.Application</mainClass>
+                            <mainClass>com.arkr.near.Application</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Class-Path>classes/</Class-Path>

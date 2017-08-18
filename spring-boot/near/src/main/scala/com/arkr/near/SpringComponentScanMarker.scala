@@ -1,4 +1,4 @@
-package com.arkr.demos.near
+package com.arkr.near
 
 /**
   * Created by hztanhuayou on 2017/8/17

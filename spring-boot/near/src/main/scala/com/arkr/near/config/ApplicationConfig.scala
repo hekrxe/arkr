@@ -1,6 +1,6 @@
-package com.arkr.demos.near.config
+package com.arkr.near.config
 
-import com.arkr.demos.near.SpringComponentScanMarker
+import com.arkr.near.SpringComponentScanMarker
 import org.springframework.context.annotation.{ComponentScan, Configuration, Import}
 
 /**
