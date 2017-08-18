@@ -1,0 +1,11 @@
+WEB-INF/views/mock/*
+WEB-INF/views/mock/kefu/*
+*.iml
+.idea/
+target/
+*.log*
+*.class
+*.patch
+*.DS_Store
+generated/
+**/WEB-INF/lib/*
