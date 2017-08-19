@@ -11,7 +11,7 @@
 
     <target name="package" depends="clean">
         <exec dir="../.." executable="mvn.cmd" failonerror="true">
-            <arg line="-T 1.5C package -Dmaven.test.skip=true -Pdev -pl spring-boot/${project.name} -am"/>
+            <arg line="-T 1.5C package -Dmaven.test.skip=true -Pdev -pl xern/${project.name} -am"/>
         </exec>
     </target>
 
