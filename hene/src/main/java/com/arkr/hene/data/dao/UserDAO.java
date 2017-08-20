@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Persistent;
  * Created by hztanhuayou on 2017/8/21
  */
 @Persistent
-public interface UserDAO {
+public interface UserDAO extends DAOInterfaceMaker{
     String CACHE_NAME = "c.usr.d";
 
     int insert(User user);

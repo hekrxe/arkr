@@ -10,9 +10,9 @@ spring:
       max-active: 30
       test-on-borrow: true
 #
-mybatis:
-  typeAliasesPackage: com.arkr.hene.data.model
-  mapperLocations: classpath:mapper/*.xml
+#mybatis:
+#  typeAliasesPackage: com.arkr.hene.data.model
+#  mapperLocations: classpath:mapper/*.xml
 
 redis:
   cache:

@@ -1,5 +1,7 @@
-package com.arkr.hene.data;
+package com.arkr.hene.data.config;
 
+import com.arkr.hene.data.dao.DAOInterfaceMaker;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
@@ -20,7 +22,7 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 
 @Configuration
-@PropertySource("classpath:config/application.yml")
+@PropertySource("classpath:application.yml")
 @EnableCaching
 public class DataCachingConfig {
     // config

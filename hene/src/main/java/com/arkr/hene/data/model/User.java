@@ -1,12 +1,11 @@
 package com.arkr.hene.data.model;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * Created by hztanhuayou on 2017/8/21
  */
-public class User implements Serializable {
+public class User extends ModelInterfaceMaker {
     private Long id;
     private String username;
     private Long age;

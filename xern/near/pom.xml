@@ -27,6 +27,18 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>hene</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>hekr</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
