@@ -1,0 +1,3 @@
+# 自动注册
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.arkr.spring.boot.datasource.config.DataSourceAutoConfiguration

@@ -11,7 +11,7 @@
     <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <File>/srv/0/logs/demos/near/app.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>/srv/0/log/demos/near/app.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>/srv/0/logs/demos/near/app.%d{yyyy-MM-dd}.log</FileNamePattern>
             <maxHistory>90</maxHistory>
         </rollingPolicy>
         <encoder>

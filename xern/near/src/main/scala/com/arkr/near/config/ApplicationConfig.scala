@@ -1,6 +1,5 @@
 package com.arkr.near.config
 
-import com.arkr.arxe.cache.RedisCacheConfig
 import com.arkr.near.SpringComponentScanMarker
 import org.springframework.context.annotation.{ComponentScan, Configuration, Import}
 
@@ -9,7 +8,7 @@ import org.springframework.context.annotation.{ComponentScan, Configuration, Imp
   * Created by hztanhuayou on 2017/8/17
   */
 @Configuration
-@Import(value = Array(classOf[WebMvcConfig], classOf[RedisCacheConfig]))
+@Import(value = Array(classOf[WebMvcConfig]))
 @ComponentScan(basePackageClasses = Array(classOf[SpringComponentScanMarker]))
 class ApplicationConfig {
   // do nothing

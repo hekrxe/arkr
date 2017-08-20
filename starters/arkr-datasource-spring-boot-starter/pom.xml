@@ -3,46 +3,47 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>demos</artifactId>
+        <artifactId>starters</artifactId>
         <groupId>com.arkr</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>hekr</artifactId>
+
+    <artifactId>arkr-datasource-spring-boot-starter</artifactId>
+
     <description>
-        The most basic module
-        Cannot dependent on other modules
-        Provide some basic tools
+        Spring Boot数据库链接池的选择:
+        Tomcat -> spring.datasource.tomcat.*
+        HikariCP -> spring.datasource.hikari.*
+        Commons DBCP -> spring.datasource.dbcp.*    不建议在生产环境使用该链接池的实现
+        Commons DBCP2 -> spring.datasource.dbcp2.*
     </description>
 
     <dependencies>
-        <!-- Optional dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <optional>true</optional>
         </dependency>
+        <!-- @ConfigurationProperties annotation processing (metadata for IDEs) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
+
 
 </project>
