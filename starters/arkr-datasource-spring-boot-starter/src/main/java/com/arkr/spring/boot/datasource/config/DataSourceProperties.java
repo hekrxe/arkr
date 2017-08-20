@@ -1,6 +1,11 @@
 package com.arkr.spring.boot.datasource.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 
 import static com.arkr.spring.boot.datasource.config.DataSourceProperties.prefix;
 
@@ -8,9 +13,12 @@ import static com.arkr.spring.boot.datasource.config.DataSourceProperties.prefix
  * Created by hztanhuayou on 2017/8/20
  */
 @ConfigurationProperties(prefix = prefix)
-public class DataSourceProperties {
+@Configuration
+@PropertySource("classpath:config/db.properties")
+public class DataSourceProperties implements EnvironmentAware {
     public static final String prefix = "spring.datasource";
 
+    @Value("${spring.datasource.url}")
     private String url;
     private String username;
     private String password;
@@ -20,6 +28,12 @@ public class DataSourceProperties {
     private Long maxWait;
     private String minIdle;
     private String initialSize;
+
+
+    @Override
+    public void setEnvironment(Environment environment) {
+        System.out.println("aaaaaaaaaaaa");
+    }
 
     public String getUrl() {
         return url;

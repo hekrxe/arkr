@@ -1,2 +1,3 @@
 # 自动注册
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.arkr.starter.redis.cache.RedisCacheAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.arkr.starter.redis.cache.RedisCacheAutoConfiguration

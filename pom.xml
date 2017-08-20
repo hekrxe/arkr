@@ -12,6 +12,7 @@
         <module>xern</module>
         <module>hekr</module>
         <module>starters</module>
+        <module>hene</module>
     </modules>
 
     <properties>
