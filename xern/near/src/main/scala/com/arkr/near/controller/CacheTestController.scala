@@ -34,6 +34,7 @@ class CacheTestController extends AbstractController {
     user.setCtm(new Date(System.currentTimeMillis()))
     user.setUsername(name)
     logger.info(s"User：${JSON.toJSONString(user, false)}")
+    userDAO.insert(user)
     "OK"
   }
 

@@ -1,13 +1,13 @@
 package com.arkr.hene.data.config;
 
-import com.arkr.hene.data.dao.DAOInterfaceMaker;
-import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,9 +22,10 @@ import redis.clients.jedis.JedisPoolConfig;
  */
 
 @Configuration
-@PropertySource("classpath:application.yml")
 @EnableCaching
-public class DataCachingConfig {
+public class DataCachingConfig implements InitializingBean {
+    private Logger logger = LoggerFactory.getLogger(DataCachingConfig.class);
+
     // config
     @Value("${redis.cache.maxIdle}")
     private Integer maxIdle;
@@ -96,5 +97,10 @@ public class DataCachingConfig {
         manager.setDefaultExpiration(expiration);
         manager.setUsePrefix(true);
         return manager;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        logger.info("DataCaching Config Succeed");
     }
 }

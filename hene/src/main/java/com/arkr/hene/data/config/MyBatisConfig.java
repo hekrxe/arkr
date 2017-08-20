@@ -4,6 +4,9 @@ import com.arkr.hene.data.model.ModelInterfaceMaker;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,9 +25,11 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-public class MyBatisConfig implements TransactionManagementConfigurer {
+public class MyBatisConfig implements TransactionManagementConfigurer, InitializingBean {
+    private Logger logger = LoggerFactory.getLogger(MyBatisConfig.class);
 
-    @Autowired
+
+    @Autowired(required = false)
     private DataSource dataSource;
 
     @Bean(name = "sqlSessionFactory")
@@ -51,5 +56,10 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new DataSourceTransactionManager(dataSource);
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        logger.info(this.getClass().getSimpleName() + " Succeed");
     }
 }

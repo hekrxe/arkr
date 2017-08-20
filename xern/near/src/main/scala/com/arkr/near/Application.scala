@@ -4,8 +4,7 @@ import java.util
 
 import com.arkr.near.config.ApplicationConfig
 import org.slf4j.LoggerFactory
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
-import org.springframework.boot.autoconfigure.{EnableAutoConfiguration, SpringBootApplication}
+import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.{Banner, SpringApplication}
 import org.springframework.web.bind.annotation.{RequestMapping, RestController}
 
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.{RequestMapping, RestController}
   */
 @RestController
 @SpringBootApplication(scanBasePackageClasses = Array(classOf[ApplicationConfig]))
-@EnableAutoConfiguration(exclude = Array(classOf[DataSourceAutoConfiguration]))
 class Application {
   private val logger = LoggerFactory.getLogger(classOf[Application])
 
