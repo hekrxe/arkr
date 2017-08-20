@@ -1,13 +1,11 @@
-package com.arkr.starter.redis.cache;
+package com.arkr.hene.data;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -18,39 +16,54 @@ import org.springframework.data.redis.serializer.SerializationException;
 import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * Created by hztanhuayou on 2017/8/20
+ * Created by hztanhuayou on 2017/8/21
  */
+
 @Configuration
-@EnableConfigurationProperties(RedisCacheProperties.class)
-@ConditionalOnClass(value = {JedisPoolConfig.class, JedisConnectionFactory.class, RedisTemplate.class, CacheManager.class})
-@ConditionalOnProperty(prefix = RedisCacheProperties.prefix, value = "enabled", matchIfMissing = true)
+@PropertySource("classpath:config/application.yml")
 @EnableCaching
-public class RedisCacheAutoConfiguration {
+public class DataCachingConfig {
+    // config
+    @Value("${redis.cache.maxIdle}")
+    private Integer maxIdle;
+    @Value("${redis.cache.maxTotal}")
+    private Integer maxTotal;
+    @Value("${redis.cache.minIdle}")
+    private Integer minIdle;
+    @Value("${redis.cache.maxWaitMills}")
+    private Long maxWaitMills;
 
-    private final RedisCacheProperties redisCacheProperties;
+    // connection
+    @Value("${redis.cache.hostname}")
+    private String hostname;
+    @Value("${redis.cache.port}")
+    private Integer port;
+    @Value("${redis.cache.password}")
+    private String password;
+    @Value("${redis.cache.timeout}")
+    private Integer timeout;
 
-    @Autowired
-    public RedisCacheAutoConfiguration(RedisCacheProperties redisCacheProperties) {
-        this.redisCacheProperties = redisCacheProperties;
-    }
+    // cache
+    @Value("${redis.cache.expiration}")
+    private Long expiration;
 
     @Bean
     public JedisPoolConfig jedisPoolConfig() {
         JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxIdle(redisCacheProperties.getMaxIdle());
-        config.setMaxTotal(redisCacheProperties.getMaxTotal());
-        config.setMaxWaitMillis(redisCacheProperties.getMaxWaitMills());
-        config.setMinIdle(redisCacheProperties.getMinIdle());
+        config.setMaxIdle(maxIdle);
+        config.setMaxTotal(maxTotal);
+        config.setMaxWaitMillis(maxWaitMills);
+        config.setMinIdle(minIdle);
         return config;
     }
 
     @Bean
     public JedisConnectionFactory jedisConnectionFactory() {
         JedisConnectionFactory factory = new JedisConnectionFactory();
-        factory.setHostName(redisCacheProperties.getHostname());
-        factory.setPort(redisCacheProperties.getPort());
-        factory.setPassword(redisCacheProperties.getPassword());
-        factory.setTimeout(redisCacheProperties.getTimeout());
+        factory.setHostName(hostname);
+        factory.setPort(port);
+        factory.setPassword(password);
+        factory.setTimeout(timeout);
         factory.setPoolConfig(jedisPoolConfig()); // 这样安全点
         return factory;
     }
@@ -78,9 +91,8 @@ public class RedisCacheAutoConfiguration {
     @Bean("cacheManager")
     public CacheManager cacheManager() {
         RedisCacheManager manager = new RedisCacheManager(redisTemplate());
-        manager.setDefaultExpiration(redisCacheProperties.getExpiration());
+        manager.setDefaultExpiration(expiration);
         manager.setUsePrefix(true);
         return manager;
     }
-
 }
