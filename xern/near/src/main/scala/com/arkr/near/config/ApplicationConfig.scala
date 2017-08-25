@@ -1,6 +1,6 @@
 package com.arkr.near.config
 
-import com.arkr.hene.data.config.DataConfig
+import com.arkr.hene.data.config.{DataConfig, DruidMonitorConfig}
 import com.arkr.near.SpringComponentScanMarker
 import org.springframework.context.annotation.{ComponentScan, Configuration, Import}
 
@@ -9,7 +9,11 @@ import org.springframework.context.annotation.{ComponentScan, Configuration, Imp
   * Created by hztanhuayou on 2017/8/17
   */
 @Configuration
-@Import(value = Array(classOf[DataConfig], classOf[WebMvcConfig]))
+@Import(value = Array(
+  classOf[DataConfig],
+  classOf[WebMvcConfig],
+  classOf[DruidMonitorConfig]
+))
 @ComponentScan(basePackageClasses = Array(classOf[SpringComponentScanMarker]))
 class ApplicationConfig {
   // do nothing

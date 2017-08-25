@@ -15,6 +15,8 @@
     </modules>
 
     <properties>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.app.version>1.0.0</project.app.version>
 
@@ -28,9 +30,11 @@
         <mybatis-spring.version>1.3.1</mybatis-spring.version>
 
         <fastjson.version>1.2.17</fastjson.version>
+        <druid.version>1.1.0</druid.version>
 
         <plugin.scala.maven.version>3.2.1</plugin.scala.maven.version>
         <plugin.maven.compiler.version>3.3</plugin.maven.compiler.version>
+        <plugin.maven.resource.version>2.7</plugin.maven.resource.version>
     </properties>
 
     <build>
@@ -80,12 +84,6 @@
                         </jvmArgs>
                     </configuration>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.version}</version>
-                </plugin>
             </plugins>
         </pluginManagement>
 
@@ -101,6 +99,12 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+                <version>${plugin.maven.compiler.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${plugin.maven.resource.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -109,9 +113,25 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${plugin.maven.compiler.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${plugin.maven.resource.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
             <!--scala-->
             <dependency>

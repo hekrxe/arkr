@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Import;
  */
 
 @Configuration
-@Import({MyBatisConfig.class, MyBatisMapperScannerConfig.class, DataCachingConfig.class})
+@Import({DruidDatasourceConfig.class,
+        MyBatisConfig.class,
+        MyBatisMapperScannerConfig.class,
+        DataCachingConfig.class})
 public class DataConfig {
 }
