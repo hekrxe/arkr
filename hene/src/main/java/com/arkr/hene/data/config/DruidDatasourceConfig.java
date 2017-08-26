@@ -21,7 +21,7 @@ import java.sql.SQLException;
  */
 @Configuration
 @EnableTransactionManagement
-@PropertySource(value = "classpath:config/db-${spring.profiles.active}-env.properties")
+@PropertySource(value = "classpath:config/${spring.profiles.active}/db.properties")
 public class DruidDatasourceConfig implements TransactionManagementConfigurer {
     private Logger logger = LoggerFactory.getLogger(DruidDatasourceConfig.class);
 

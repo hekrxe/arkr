@@ -24,7 +24,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 @EnableCaching
-@PropertySource(value = "classpath:config/db-cache.properties")
+@PropertySource(value = "classpath:config/${spring.profiles.active}/db-cache.properties")
 public class DataCachingConfig implements InitializingBean {
     private Logger logger = LoggerFactory.getLogger(DataCachingConfig.class);
 

@@ -1,19 +1,16 @@
-package com.arkr.near.config
+package com.arkr.hear.config
 
-import com.arkr.hene.data.config.{DataConfig, DruidMonitorConfig}
+import com.arkr.hear.SpringComponentScanMarker
+import com.arkr.hene.data.config.DataConfig
 import com.arkr.hene.mq.kafka.KafKaConfig
-import com.arkr.near.SpringComponentScanMarker
 import org.springframework.context.annotation.{ComponentScan, Configuration, Import}
 
 /**
-  * 应用程序根配置
-  * Created by hztanhuayou on 2017/8/17
+  * Created by hztanhuayou on 2017/8/26
   */
 @Configuration
 @Import(value = Array(
   classOf[DataConfig],
-  classOf[WebMvcConfig],
-  classOf[DruidMonitorConfig],
   classOf[KafKaConfig]
 ))
 @ComponentScan(basePackageClasses = Array(classOf[SpringComponentScanMarker]))
