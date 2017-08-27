@@ -4,8 +4,9 @@ import java.sql.Date
 
 import com.alibaba.fastjson.JSON
 import com.arkr.hekr.controller.AbstractController
+import com.arkr.hekr.model.User
 import com.arkr.hene.data.dao.UserDAO
-import com.arkr.hene.data.model.User
+import com.arkr.near.service.UserService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.{RequestMapping, RequestParam, RestController}
@@ -20,9 +21,13 @@ class CacheTestController extends AbstractController {
 
   @Autowired private var userDAO: UserDAO = _
 
+  @Autowired private var userService: UserService = _
+
   @RequestMapping(Array("/get"))
   def testRedis(@RequestParam("id") id: Long): User = {
-    val user = userDAO.queryById(id)
+    //    val user = userDAO.queryById(id)
+    userService.echo("Hi")
+    val user = userService.queryById(id)
     logger.info(s"User：${JSON.toJSONString(user, false)}")
     user
   }

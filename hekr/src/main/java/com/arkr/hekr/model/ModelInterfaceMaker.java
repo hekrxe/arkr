@@ -1,4 +1,4 @@
-package com.arkr.hene.data.model;
+package com.arkr.hekr.model;
 
 /**
  * Created by hztanhuayou on 2017/8/21

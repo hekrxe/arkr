@@ -1,6 +1,6 @@
 package com.arkr.hene.data.config;
 
-import com.arkr.hene.data.model.ModelInterfaceMaker;
+import com.arkr.hekr.model.ModelInterfaceMaker;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;

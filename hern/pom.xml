@@ -7,16 +7,14 @@
         <groupId>com.arkr</groupId>
         <version>1.0.0</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>hekr</artifactId>
+
+    <artifactId>hern</artifactId>
+    <packaging>pom</packaging>
     <description>
-        The most basic module
-        Cannot dependent on other modules
-        Provide some basic tools
+        spring-boot-starter-dubbo
     </description>
-
-    <dependencies>
-    </dependencies>
-
+    <modules>
+        <module>hexe</module>
+    </modules>
 </project>

@@ -43,6 +43,23 @@
             <version>${project.app.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.dubbo.springboot</groupId>
+            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>xehe</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

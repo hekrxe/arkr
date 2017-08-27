@@ -1,4 +1,4 @@
-package com.arkr.hene.data.model;
+package com.arkr.hekr.model;
 
 import java.sql.Date;
 

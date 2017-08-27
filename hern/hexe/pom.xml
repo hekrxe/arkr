@@ -3,60 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>arkr</artifactId>
+        <artifactId>hern</artifactId>
         <groupId>com.arkr</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hene</artifactId>
+    <artifactId>hexe</artifactId>
 
     <properties>
-        <start-class>com.arkr.hene.Application</start-class>
+        <start-class>com.arkr.hexe.Application</start-class>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>com.arkr</groupId>
+            <artifactId>hene</artifactId>
+            <version>${project.app.version}</version>
         </dependency>
 
         <dependency>
@@ -64,21 +27,60 @@
             <artifactId>hekr</artifactId>
             <version>${project.app.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.dubbo.springboot</groupId>
+            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>xehe</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>hene</finalName>
+        <finalName>hexe</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.*</include>
+                    <include>static/**</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
 
             <resource>
-                <directory>../hekr/src/main/resources</directory>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>templates/**</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>config/*.*</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+
+            <resource>
+                <directory>../../hene/src/main/resources</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>
@@ -103,5 +105,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

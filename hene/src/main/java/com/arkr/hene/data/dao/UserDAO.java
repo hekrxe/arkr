@@ -1,6 +1,6 @@
 package com.arkr.hene.data.dao;
 
-import com.arkr.hene.data.model.User;
+import com.arkr.hekr.model.User;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.annotation.Persistent;
 
@@ -8,7 +8,7 @@ import org.springframework.data.annotation.Persistent;
  * Created by hztanhuayou on 2017/8/21
  */
 @Persistent
-public interface UserDAO extends DAOInterfaceMaker{
+public interface UserDAO extends DAOInterfaceMaker {
     String CACHE_NAME = "c.usr.d";
 
     int insert(User user);
