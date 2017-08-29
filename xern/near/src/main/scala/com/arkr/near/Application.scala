@@ -2,6 +2,7 @@ package com.arkr.near
 
 import java.util
 
+import com.arkr.hekr.sys.SysConfigListener
 import com.arkr.near.config.ApplicationConfig
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -37,6 +38,7 @@ object Application {
   def main(args: Array[String]): Unit = {
     val application = new SpringApplication(classOf[Application])
     application.setBannerMode(Banner.Mode.OFF)
+    application.addListeners(new SysConfigListener)
     application.run(args: _*)
     logger.info("Started")
   }
