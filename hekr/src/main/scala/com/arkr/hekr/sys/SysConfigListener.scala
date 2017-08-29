@@ -1,13 +1,13 @@
 package com.arkr.hekr.sys
 
 import org.slf4j.LoggerFactory
+import org.springframework.boot.context.event.ApplicationPreparedEvent
 import org.springframework.context.ApplicationListener
-import org.springframework.context.event.ContextRefreshedEvent
 
 /**
   * Created by hztanhuayou on 2017/8/29
   */
-class SysConfigListener extends ApplicationListener[ContextRefreshedEvent] {
+class SysConfigListener extends ApplicationListener[ApplicationPreparedEvent] {
   private val logger = LoggerFactory.getLogger(getClass)
 
   /**
@@ -39,7 +39,7 @@ class SysConfigListener extends ApplicationListener[ContextRefreshedEvent] {
     * 启动App(ServletContainer)完成后
     */
   // 由于此处做的是全局的配置文件可读,即在Bean初始化前都可以读那么只能在 ContextRefreshedEvent 这个事件前进行
-  override def onApplicationEvent(event: ContextRefreshedEvent): Unit = {
+  override def onApplicationEvent(event: ApplicationPreparedEvent): Unit = {
     // TODO
   }
 }
