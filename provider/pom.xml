@@ -9,14 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xern</artifactId>
+    <artifactId>provider</artifactId>
     <packaging>pom</packaging>
+    <description>
+        spring-boot-starter-dubbo
+    </description>
     <modules>
-        <module>near</module>
-        <module>hear</module>
+        <module>echo</module>
     </modules>
-
-    <dependencies>
-    </dependencies>
-
 </project>

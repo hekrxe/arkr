@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hene</artifactId>
+    <artifactId>bootstrap</artifactId>
 
     <dependencies>
         <dependency>
@@ -57,7 +57,7 @@
 
         <dependency>
             <groupId>com.arkr</groupId>
-            <artifactId>hekr</artifactId>
+            <artifactId>common</artifactId>
             <version>${project.app.version}</version>
         </dependency>
     </dependencies>

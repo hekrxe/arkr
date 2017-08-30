@@ -9,12 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hern</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>service</artifactId>
+
     <description>
-        spring-boot-starter-dubbo
+        服务接口定义模块
     </description>
-    <modules>
-        <module>hexe</module>
-    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

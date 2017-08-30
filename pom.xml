@@ -9,11 +9,11 @@
     <packaging>pom</packaging>
     <version>1.0.0</version>
     <modules>
-        <module>xern</module>
-        <module>hekr</module>
-        <module>hene</module>
-        <module>hern</module>
-        <module>xehe</module>
+        <module>servers</module>
+        <module>common</module>
+        <module>bootstrap</module>
+        <module>provider</module>
+        <module>service</module>
     </modules>
 
     <properties>

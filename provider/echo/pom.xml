@@ -3,21 +3,57 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>xern</artifactId>
+        <artifactId>provider</artifactId>
         <groupId>com.arkr</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hear</artifactId>
+    <artifactId>echo</artifactId>
 
     <properties>
-        <start-class>com.arkr.hear.Application</start-class>
+        <start-class>com.arkr.hexe.Application</start-class>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dubbo.springboot</groupId>
+            <artifactId>spring-boot-starter-dubbo</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>service</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
+    </dependencies>
 
     <build>
-        <finalName>near</finalName>
+        <finalName>hexe</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -44,13 +80,7 @@
             </resource>
 
             <resource>
-                <directory>../../hene/src/main/resources</directory>
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>../../hekr/src/main/resources</directory>
+                <directory>../../bootstrap/src/main/resources</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>
@@ -75,25 +105,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.arkr</groupId>
-            <artifactId>hene</artifactId>
-            <version>${project.app.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.arkr</groupId>
-            <artifactId>hekr</artifactId>
-            <version>${project.app.version}</version>
-        </dependency>
-    </dependencies>
-
-
 </project>

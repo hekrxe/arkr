@@ -7,19 +7,20 @@
         <groupId>com.arkr</groupId>
         <version>1.0.0</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>xehe</artifactId>
-
+    <artifactId>common</artifactId>
     <description>
-        服务接口定义模块
+        The most basic module
+        Cannot dependent on other modules
+        Provide some basic tools
     </description>
 
     <dependencies>
         <dependency>
-            <groupId>com.arkr</groupId>
-            <artifactId>hekr</artifactId>
-            <version>${project.app.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
