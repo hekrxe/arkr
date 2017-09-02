@@ -17,6 +17,11 @@
     </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>boot</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

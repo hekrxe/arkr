@@ -47,5 +47,6 @@ class SysConfigListener extends ApplicationListener[ApplicationEnvironmentPrepar
         SysConfigImpl.load(new PropertiesConfigLoader(pf))
       }
     })
+
   }
 }

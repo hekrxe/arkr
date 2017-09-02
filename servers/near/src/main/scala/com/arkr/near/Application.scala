@@ -2,7 +2,7 @@ package com.arkr.near
 
 import java.util
 
-import com.arkr.hekr.sys.config.SysConfigListener
+import com.arkr.hekr.sys.config.{SysConfig, SysConfigListener}
 import com.arkr.near.config.ApplicationConfig
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -40,7 +40,7 @@ object Application {
     application.setBannerMode(Banner.Mode.OFF)
     application.addListeners(new SysConfigListener)
     application.run(args: _*)
-    logger.info("Started")
+    logger.info(s"${SysConfig.getOrElse("env", null)} Started")
   }
 
 }

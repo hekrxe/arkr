@@ -16,11 +16,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.arkr</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>${project.app.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>com.arkr</groupId>
@@ -80,7 +75,7 @@
             </resource>
 
             <resource>
-                <directory>../../bootstrap/src/main/resources</directory>
+                <directory>../../boot/src/main/resources</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>

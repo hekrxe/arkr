@@ -12,7 +12,7 @@ object SysConfig {
 
 }
 
-private class SysConfigImpl private {
+class SysConfigImpl private {
   private implicit val ordering: Ordering[ConfigLoader] = new Ordering[ConfigLoader] {
     override def compare(x: ConfigLoader, y: ConfigLoader): Int = x.getOrder - y.getOrder
   }
@@ -41,7 +41,7 @@ private class SysConfigImpl private {
 }
 
 private[sys] object SysConfigImpl {
-  val impl = new SysConfigImpl
+  val impl = new SysConfigImpl()
 
   def load(source: ConfigLoader): Unit = {
     if (null != source)

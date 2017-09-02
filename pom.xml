@@ -11,7 +11,7 @@
     <modules>
         <module>servers</module>
         <module>common</module>
-        <module>bootstrap</module>
+        <module>boot</module>
         <module>provider</module>
         <module>service</module>
     </modules>
