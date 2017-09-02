@@ -3,7 +3,6 @@ package com.arkr.hekr.sys.config
 import org.slf4j.LoggerFactory
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent
 import org.springframework.context.ApplicationListener
-import org.springframework.util.StringUtils
 
 /**
   * Created by hztanhuayou on 2017/8/29
@@ -41,12 +40,6 @@ class SysConfigListener extends ApplicationListener[ApplicationEnvironmentPrepar
     */
   // 由于此处做的是全局的配置文件可读,即在Bean初始化前都可以读那么只能在 ContextRefreshedEvent 这个事件前进行
   override def onApplicationEvent(event: ApplicationEnvironmentPreparedEvent): Unit = {
-    event.getEnvironment.getActiveProfiles.foreach(profile => {
-      val pf = profile.trim
-      if (StringUtils.hasText(pf)) {
-        SysConfigImpl.load(new PropertiesConfigLoader(pf))
-      }
-    })
-
+    SysConfigImpl.load(new PropertiesConfigLoader(event.getEnvironment.getActiveProfiles.toList))
   }
 }
