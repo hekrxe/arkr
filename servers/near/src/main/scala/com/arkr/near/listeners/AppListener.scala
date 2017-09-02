@@ -12,6 +12,6 @@ class AppListener extends ApplicationListener[ApplicationEvent] {
   private val logger = LoggerFactory.getLogger(getClass)
 
   override def onApplicationEvent(event: ApplicationEvent): Unit = {
-    logger.error(s"App: ${event.getClass.getSimpleName}")
+    logger.info(s"App: ${event.getClass.getSimpleName}")
   }
 }
