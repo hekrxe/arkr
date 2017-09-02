@@ -1,5 +1,7 @@
 package com.arkr.hekr.message
 
+import com.arkr.hekr.sys.config.SysConfig
+
 import scala.beans.BeanProperty
 
 /**
@@ -12,4 +14,8 @@ class HttpResponse extends MSG {
   @BeanProperty var result: Object = _
   @BeanProperty var message: String = _
   @BeanProperty var time: Long = System.currentTimeMillis()
+
+  private def aa() {
+
+  }
 }
