@@ -2,8 +2,10 @@ package com.arkr.near
 
 import java.util
 
+import com.arkr.boot.config.cache.EnableDataCaching
+import com.arkr.boot.config.db.EnableDataSource
+import com.arkr.boot.config.redis.EnableRedisTemplate
 import com.arkr.hekr.sys.config.{SysConfig, SysConfigListener}
-import com.arkr.near.config.ApplicationConfig
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.{Banner, SpringApplication}
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.{RequestMapping, RestController}
   * Created by hztanhuayou on 2017/8/17
   */
 @RestController
-@SpringBootApplication(scanBasePackageClasses = Array(classOf[ApplicationConfig]))
+@EnableDataSource
+@EnableDataCaching
+@EnableRedisTemplate
+@SpringBootApplication
 class Application {
   private val logger = LoggerFactory.getLogger(classOf[Application])
 

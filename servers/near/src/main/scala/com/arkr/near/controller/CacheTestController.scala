@@ -1,12 +1,11 @@
 package com.arkr.near.controller
 
-import java.sql.Date
+import java.sql.Timestamp
 
 import com.alibaba.fastjson.JSON
+import com.arkr.boot.dao.UserDAO
+import com.arkr.boot.model.User
 import com.arkr.hekr.controller.AbstractController
-import com.arkr.hekr.model.User
-import com.arkr.hene.data.dao.UserDAO
-import com.arkr.near.service.UserService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.{RequestMapping, RequestParam, RestController}
@@ -21,13 +20,9 @@ class CacheTestController extends AbstractController {
 
   @Autowired private var userDAO: UserDAO = _
 
-  @Autowired private var userService: UserService = _
-
   @RequestMapping(Array("/get"))
   def testRedis(@RequestParam("id") id: Long): User = {
-    //    val user = userDAO.queryById(id)
-    userService.echo("Hi")
-    val user = userService.queryById(id)
+    val user = userDAO.queryById(id)
     logger.info(s"User：${JSON.toJSONString(user, false)}")
     user
   }
@@ -35,11 +30,18 @@ class CacheTestController extends AbstractController {
   @RequestMapping(Array("/set"))
   def testRedis1(@RequestParam("name") name: String): String = {
     val user = new User
-    user.setAge(((1000 * Math.random()) % 100).toLong)
-    user.setCtm(new Date(System.currentTimeMillis()))
     user.setUsername(name)
+    user.setPassword("121212")
+    val now = new Timestamp(System.currentTimeMillis())
+    user.setDbCreateTime(now)
+    user.setDbUpdateTime(now)
+
     logger.info(s"User：${JSON.toJSONString(user, false)}")
     userDAO.insert(user)
+
+    val dbUser = userDAO.queryByUsername(name)
+    logger.info(s"dbUser: ${JSON.toJSONString(dbUser, false)}")
+
     "OK"
   }
 

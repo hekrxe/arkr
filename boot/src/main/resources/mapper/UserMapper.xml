@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.arkr.hene.data.dao.UserDAO">
+<mapper namespace="com.arkr.boot.dao.UserDAO">
 
-    <resultMap id="BaseResultMap" type="com.arkr.hekr.model.User">
-        <id column="id" property="id" jdbcType="VARCHAR"/>
-        <result column="username" property="username" jdbcType="VARCHAR"/>
+    <resultMap id="userResultMap" type="com.arkr.boot.model.User">
         <result column="id" property="id" jdbcType="BIGINT"/>
-        <result column="age" property="age" jdbcType="BIGINT"/>
-        <result column="ctm" property="ctm" jdbcType="DATE"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="db_update_time" property="dbUpdateTime" jdbcType="TIMESTAMP"/>
+        <result column="db_create_time" property="dbCreateTime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id, username, age, ctm
+    <sql id="userColumns">
+        `id`,`username`,`password`,`db_update_time`,`db_create_time`
     </sql>
 
-    <select id="queryById" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from tb_user
-        where id = #{id}
+    <select id="queryById" resultMap="userResultMap">
+        SELECT `id`,
+        <include refid="userColumns"/>
+        FROM `user`
+        WHERE `id`=#{id} LIMIT 1
     </select>
 
-    <insert id="insert">
-        insert into tb_user (username, age,ctm)
-        values (#{username},#{age},#{ctm});
-    </insert>
 </mapper>

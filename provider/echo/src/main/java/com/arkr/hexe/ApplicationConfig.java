@@ -1,6 +1,6 @@
 package com.arkr.hexe;
 
-import com.arkr.hene.data.config.DataConfig;
+import com.arkr.boot.data.config.DataConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 

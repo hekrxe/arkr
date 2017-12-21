@@ -1,6 +1,8 @@
 package com.arkr.hear
 
-import com.arkr.hear.config.ApplicationConfig
+import com.arkr.boot.config.cache.EnableDataCaching
+import com.arkr.boot.config.db.EnableDataSource
+import com.arkr.boot.config.redis.EnableRedisTemplate
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.{Banner, SpringApplication}
@@ -8,7 +10,10 @@ import org.springframework.boot.{Banner, SpringApplication}
 /**
   * Created by hztanhuayou on 2017/8/26
   */
-@SpringBootApplication(scanBasePackageClasses = Array(classOf[ApplicationConfig]))
+@EnableDataSource
+@EnableDataCaching
+@EnableRedisTemplate
+@SpringBootApplication
 class Application
 
 object Application extends App {
