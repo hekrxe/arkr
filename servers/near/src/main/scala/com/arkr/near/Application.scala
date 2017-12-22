@@ -5,7 +5,7 @@ import java.util
 import com.arkr.boot.config.cache.EnableDataCaching
 import com.arkr.boot.config.db.EnableDataSource
 import com.arkr.boot.config.redis.EnableRedisTemplate
-import com.arkr.hekr.sys.config.{SysConfig, SysConfigListener}
+import com.arkr.boot.config.{SysConfig, SysConfigLoader}
 import org.slf4j.LoggerFactory
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.{Banner, SpringApplication}
@@ -36,16 +36,13 @@ class Application {
 
 }
 
-
-object Application {
+object Application extends App {
   private val logger = LoggerFactory.getLogger(classOf[Application])
 
-  def main(args: Array[String]): Unit = {
-    val application = new SpringApplication(classOf[Application])
-    application.setBannerMode(Banner.Mode.OFF)
-    application.addListeners(new SysConfigListener)
-    application.run(args: _*)
-    logger.info(s"${SysConfig.getOrElse("env", null)} Started")
-  }
-
+  SysConfigLoader.apply(List("classpath:config/res.properties"))
+  val application = new SpringApplication(classOf[Application])
+  application.setBannerMode(Banner.Mode.OFF)
+  application.run(args: _*)
+  logger.info(s"${SysConfig.getOrElse("env", null)} Started")
+  logger.info(SysConfig.getOrElse("ping", "aa"))
 }

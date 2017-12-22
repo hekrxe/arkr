@@ -5,7 +5,7 @@ import java.sql.Timestamp
 import com.alibaba.fastjson.JSON
 import com.arkr.boot.dao.UserDAO
 import com.arkr.boot.model.User
-import com.arkr.hekr.controller.AbstractController
+import com.arkr.common.controller.AbstractController
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.{RequestMapping, RequestParam, RestController}

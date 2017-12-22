@@ -27,7 +27,7 @@ import java.nio.charset.Charset;
 @Configuration
 @EnableCaching
 @EnableAutoConfiguration(exclude = {RedisAutoConfiguration.class})
-@PropertySource(value = "classpath:config/${spring.profiles.active}/redis.properties")
+@PropertySource(value = "classpath:config/redis.properties")
 class RedisTemplateConfig {
     @Value("${redis.maxIdle}")
     private Integer maxIdle;

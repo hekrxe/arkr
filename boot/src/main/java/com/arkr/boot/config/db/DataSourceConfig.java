@@ -16,7 +16,7 @@ import javax.sql.DataSource;
  * @date 2017/12/4
  */
 @Configuration
-@PropertySource(value = "classpath:config/${spring.profiles.active}/db.properties")
+@PropertySource(value = "classpath:config/db.properties")
 class DataSourceConfig {
     private Logger logger = LoggerFactory.getLogger(DataSourceConfig.class);
 

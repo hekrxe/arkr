@@ -26,7 +26,7 @@ import java.nio.charset.Charset;
  */
 @Configuration
 @EnableCaching
-@PropertySource(value = "classpath:config/${spring.profiles.active}/db-cache.properties")
+@PropertySource(value = "classpath:config/db-cache.properties")
 class RedisCacheConfig implements InitializingBean {
     private Logger logger = LoggerFactory.getLogger(RedisCacheConfig.class);
 
