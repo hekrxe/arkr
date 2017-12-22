@@ -175,7 +175,3 @@ object ZKClient {
     new String(bytes, client.DEF_CHARSET)
   }
 }
-
-object MainApp extends App {
-  ZKClient.create("/nihao", "hao")
-}

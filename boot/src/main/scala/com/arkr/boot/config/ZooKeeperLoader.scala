@@ -48,6 +48,9 @@ private[config] class ZooKeeperLoader(val zkPath: String) extends ConfigLoader {
     * callback 重新加载
     */
   override def reload(): Unit = {
+  }
+
+  private def reloadFromZk(): Unit = {
     logger.info("Reload...")
 
     val tmpProperties = mutable.HashMap[String, String]()
@@ -77,11 +80,11 @@ private[config] class ZooKeeperLoader(val zkPath: String) extends ConfigLoader {
           if (null != data) {
             val path = data.getPath
             if (children.contains(path)) {
-              reload()
+              reloadFromZk()
             }
           }
         case PathChildrenCacheEvent.Type.INITIALIZED =>
-          reload()
+          reloadFromZk()
         case _ =>
           logger.warn(JSON.toJSONString(event, false))
       }
