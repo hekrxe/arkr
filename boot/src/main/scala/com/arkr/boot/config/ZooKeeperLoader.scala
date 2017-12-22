@@ -2,6 +2,7 @@ package com.arkr.boot.config
 
 import java.util
 
+import com.alibaba.fastjson.JSON
 import com.arkr.common.zk.ZKClient
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent
 import org.apache.curator.utils.ZKPaths
@@ -81,6 +82,8 @@ private[config] class ZooKeeperLoader(val zkPath: String) extends ConfigLoader {
           }
         case PathChildrenCacheEvent.Type.INITIALIZED =>
           reload()
+        case _ =>
+          logger.warn(JSON.toJSONString(event, false))
       }
     })
   }
