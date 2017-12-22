@@ -21,11 +21,13 @@ private class ZKClient private {
   private val CLIENT = init()
 
   @throws[Exception]
-  def getObject[T](path: String, clazz: Class[T]): T = {
-    checkPath(path)
-
-    val bytes = CLIENT.getData.forPath(path)
-    JSON.parseObject(bytes, 0, bytes.length, DEF_CHARSET, clazz)
+  def getObject[T](path: String, clazz: Class[T]): Option[T] = {
+    if (exist(path)) {
+      val bytes = CLIENT.getData.forPath(path)
+      Some(JSON.parseObject(bytes, 0, bytes.length, DEF_CHARSET, clazz))
+    } else {
+      None
+    }
   }
 
   @throws[Exception]
@@ -75,6 +77,11 @@ private class ZKClient private {
     val cache = new PathChildrenCache(CLIENT, path, true)
     cache.getListenable.addListener(listener)
     cache.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT)
+    Runtime.getRuntime.addShutdownHook(new Thread() {
+      override def run(): Unit = {
+        cache.close()
+      }
+    })
   }
 
   @throws[Exception]
@@ -114,6 +121,11 @@ private class ZKClient private {
       .build()
     client.start()
 
+    Runtime.getRuntime.addShutdownHook(new Thread() {
+      override def run(): Unit = {
+        client.close()
+      }
+    })
     client
   }
 
@@ -128,8 +140,13 @@ object ZKClient {
     val ZK_NOT_NULL = 600
   }
 
+  object Root {
+    val ZK_CONFIG = "/configuration"
+    val ZK_LOCK = "/lock"
+  }
+
   @throws[Exception]
-  def getObject[T](path: String, clazz: Class[T]): T = client.getObject(path, clazz)
+  def getObject[T](path: String, clazz: Class[T]): Option[T] = client.getObject(path, clazz)
 
   @throws[Exception]
   def setData(path: String, data: Object): Unit = client setData(path, data)
@@ -153,6 +170,10 @@ object ZKClient {
 
   @throws[Exception]
   def exist(path: String): Boolean = client.exist(path)
+
+  def decode(bytes: Array[Byte]): String = {
+    new String(bytes, client.DEF_CHARSET)
+  }
 }
 
 object MainApp extends App {

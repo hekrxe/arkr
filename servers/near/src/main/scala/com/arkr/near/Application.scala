@@ -39,10 +39,10 @@ class Application {
 object Application extends App {
   private val logger = LoggerFactory.getLogger(classOf[Application])
 
-  SysConfigLoader.apply(List("classpath:config/res.properties"))
+  SysConfigLoader.apply(List("classpath:config/res.properties"), "near")
   val application = new SpringApplication(classOf[Application])
   application.setBannerMode(Banner.Mode.OFF)
   application.run(args: _*)
   logger.info(s"${SysConfig.getOrElse("env", null)} Started")
-  logger.info(SysConfig.getOrElse("ping", "aa"))
+  logger.info(SysConfig.getOrElse("abc", "aa"))
 }
