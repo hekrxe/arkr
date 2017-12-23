@@ -28,5 +28,5 @@ object SysConfigLoader {
     }
   }
 
-  def apply(resources: List[String] = List(), zkPath: String = null): Unit = onApplicationStart(resources, zkPath)
+  def apply(resources: Array[String], zkPath: String = null): Unit = onApplicationStart(resources.toList, zkPath)
 }

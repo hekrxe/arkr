@@ -39,7 +39,7 @@ class Application {
 object Application extends App {
   private val logger = LoggerFactory.getLogger(classOf[Application])
 
-  SysConfigLoader.apply(List("classpath:config/res.properties"), "near")
+  SysConfigLoader.apply(Array("classpath:config/res.properties"), "near")
   val application = new SpringApplication(classOf[Application])
   application.setBannerMode(Banner.Mode.OFF)
   application.run(args: _*)

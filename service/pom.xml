@@ -20,7 +20,15 @@
             <groupId>com.arkr</groupId>
             <artifactId>common</artifactId>
             <version>${project.app.version}</version>
+            <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>boot</artifactId>
+            <version>${project.app.version}</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
 </project>

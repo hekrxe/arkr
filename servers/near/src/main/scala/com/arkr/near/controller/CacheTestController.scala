@@ -2,10 +2,12 @@ package com.arkr.near.controller
 
 import java.sql.Timestamp
 
+import com.alibaba.dubbo.config.annotation.Reference
 import com.alibaba.fastjson.JSON
 import com.arkr.boot.dao.UserDAO
 import com.arkr.boot.model.User
 import com.arkr.common.controller.AbstractController
+import com.arkr.service.echo.MyEchoService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.{RequestMapping, RequestParam, RestController}
@@ -19,6 +21,7 @@ class CacheTestController extends AbstractController {
   private val logger = LoggerFactory.getLogger(classOf[CacheTestController])
 
   @Autowired private var userDAO: UserDAO = _
+  @Reference(version = "1.0.0") private var myEchoService: MyEchoService = _
 
   @RequestMapping(Array("/get"))
   def testRedis(@RequestParam("id") id: Long): User = {
@@ -43,6 +46,11 @@ class CacheTestController extends AbstractController {
     logger.info(s"dbUser: ${JSON.toJSONString(dbUser, false)}")
 
     "OK"
+  }
+
+  @RequestMapping(Array("/dubbo"))
+  def testDubbo(): String = {
+    myEchoService.echo("hi!") + " Dubbo"
   }
 
 }
