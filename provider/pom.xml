@@ -16,5 +16,6 @@
     </description>
     <modules>
         <module>echo</module>
+        <module>apple</module>
     </modules>
 </project>

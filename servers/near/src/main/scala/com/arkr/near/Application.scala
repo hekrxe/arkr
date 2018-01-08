@@ -46,3 +46,15 @@ object Application extends App {
   logger.info(s"${SysConfig.getOrElse("env", null)} Started")
   logger.info(SysConfig.getOrElse("abc", "aa"))
 }
+
+
+private object Sort extends App {
+
+  def quickSort(list: List[Int]): List[Int] = list match {
+    case Nil => Nil
+    case x :: xs =>
+      val (before, after) = xs partition (_ < x)
+      quickSort(before) ++ (x :: quickSort(after))
+  }
+
+}
