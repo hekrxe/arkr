@@ -1,13 +1,13 @@
 package com.arkr.provider.apple.akkaext
 
-import akka.actor.{ActorSystem, Extension, Props}
+import akka.actor.{Actor, ActorSystem, Extension, Props}
 import org.springframework.context.ApplicationContext
 
 /**
   * @author hztanhuayou
   * @date 2018/1/8
   */
-class SpringExt extends Extension{
+class SpringExt extends Extension {
   @volatile var applicationContext: ApplicationContext = _
 
   /**
@@ -26,6 +26,10 @@ class SpringExt extends Extension{
   // 即 clazz属性
   def props(actorBeanName: String): Props = {
     Props(classOf[SpringActorProducer], applicationContext, actorBeanName)
+  }
+
+  def props[T <: Actor](classOfActor: Class[T]): Props = {
+    Props(classOf[SpringActorProducer], applicationContext, classOfActor)
   }
 }
 

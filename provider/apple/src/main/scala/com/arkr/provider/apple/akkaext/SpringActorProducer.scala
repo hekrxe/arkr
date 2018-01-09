@@ -10,9 +10,33 @@ import org.springframework.context.ApplicationContext
   * @author hztanhuayou
   * @date 2018/1/8
   */
-class SpringActorProducer(ctx: ApplicationContext, actorBeanName: String) extends IndirectActorProducer {
+class SpringActorProducer private(val ctx: ApplicationContext) extends IndirectActorProducer {
+  private var classOfActor: Class[_ <: Actor] = _
+  private var actorBeanName: String = _
 
-  override def produce: Actor = ctx.getBean(actorBeanName, classOf[Actor])
+  def this(ctx: ApplicationContext, actorBeanName: String) {
+    this(ctx)
+    this.actorBeanName = actorBeanName
+  }
 
-  override def actorClass: Class[_ <: Actor] = ctx.getType(actorBeanName).asInstanceOf[Class[_ <: Actor]]
+  def this(ctx: ApplicationContext, classOfActor: Class[_ <: Actor]) {
+    this(ctx)
+    this.classOfActor = classOfActor
+  }
+
+  override def produce: Actor = {
+    if (classOfActor eq null) {
+      ctx.getBean(actorBeanName, classOf[Actor])
+    } else {
+      ctx.getBean(classOfActor)
+    }
+  }
+
+  override def actorClass: Class[_ <: Actor] = {
+    if (classOfActor ne null) {
+      classOfActor
+    } else {
+      ctx.getType(actorBeanName).asInstanceOf[Class[_ <: Actor]]
+    }
+  }
 }

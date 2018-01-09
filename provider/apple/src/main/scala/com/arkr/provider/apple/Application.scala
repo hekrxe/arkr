@@ -3,6 +3,7 @@ package com.arkr.provider.apple
 import akka.actor.ActorSystem
 import com.arkr.boot.config.{SysConfig, SysConfigLoader}
 import com.arkr.provider.apple.actor.Start
+import com.arkr.provider.apple.actor.wc.MasterActor
 import com.arkr.provider.apple.akkaext.SpringExt
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.InitializingBean
@@ -25,7 +26,7 @@ class Application extends InitializingBean {
 
   override def afterPropertiesSet(): Unit = {
     actorSystem.actorOf(SpringExt.apply(actorSystem)(applicationContext)
-      .props("masterActor"), "masterActor-name") ! Start("classpath:config/application.properties")
+      .props(classOf[MasterActor]), "masterActor-name") ! Start("classpath:config/application.properties")
   }
 }
 
