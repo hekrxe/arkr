@@ -9,52 +9,59 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hear</artifactId>
+    <artifactId>near</artifactId>
 
     <properties>
         <start-class>com.arkr.hear.Application</start-class>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.arkr</groupId>
+            <artifactId>service</artifactId>
+            <version>${project.app.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>near</finalName>
+        <filters>
+            <filter>../../common/src/main/filters/${env}-common.properties</filter>
+            <filter>../../boot/src/main/filters/${env}-boot.properties</filter>
+            <filter>src/main/filters/${env}-application.properties</filter>
+        </filters>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>static/**</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>templates/**</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>config/*.*</include>
-                </includes>
+                <directory>../../common/src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
 
             <resource>
                 <directory>../../boot/src/main/resources</directory>
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>mapper/*.*</exclude>
+                </excludes>
             </resource>
             <resource>
-                <directory>../../common/src/main/resources</directory>
+                <directory>../../boot/src/main/resources</directory>
+                <filtering>false</filtering>
                 <includes>
-                    <include>**/*.*</include>
+                    <include>mapper/*.*</include>
                 </includes>
             </resource>
+
         </resources>
 
         <plugins>
@@ -76,18 +83,37 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>com.arkr</groupId>
-            <artifactId>common</artifactId>
-            <version>${project.app.version}</version>
-        </dependency>
-    </dependencies>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
 
+        <profile>
+            <id>online</id>
+            <properties>
+                <env>online</env>
+            </properties>
+        </profile>
 
+        <profile>
+            <id>release</id>
+            <properties>
+                <env>release</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>testing</id>
+            <properties>
+                <env>testing</env>
+            </properties>
+        </profile>
+    </profiles>
 </project>
