@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>near</artifactId>
+    <artifactId>hear</artifactId>
 
     <properties>
         <start-class>com.arkr.hear.Application</start-class>
