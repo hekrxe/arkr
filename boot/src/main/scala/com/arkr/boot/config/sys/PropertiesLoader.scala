@@ -1,4 +1,4 @@
-package com.arkr.boot.config
+package com.arkr.boot.config.sys
 
 import org.springframework.core.io.DefaultResourceLoader
 import org.springframework.core.io.support.PropertiesLoaderUtils
