@@ -65,7 +65,15 @@ private[kafka] class KafkaConfig extends InitializingBean {
     map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer])
     map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, classOf[StringDeserializer])
     map.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP)
-    map.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest")
+    /**
+      * earliest
+      * 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
+      * latest
+      * 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据
+      * none
+      * topic各分区都存在已提交的offset时，从offset后开始消费；只要有一个分区不存在已提交的offset，则抛出异常
+      */
+    map.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest")
 
     map
   }

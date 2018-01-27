@@ -14,6 +14,7 @@
     <modules>
         <module>near</module>
         <module>hear</module>
+        <module>link</module>
     </modules>
 
     <dependencies>

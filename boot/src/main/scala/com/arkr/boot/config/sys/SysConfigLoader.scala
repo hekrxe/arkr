@@ -2,6 +2,10 @@ package com.arkr.boot.config.sys
 
 import java.util.concurrent.atomic.AtomicBoolean
 
+import org.springframework.util.StringUtils
+
+import scala.collection.mutable
+
 /**
   * @author hztanhuayou
   * @date 2017/12/5
@@ -21,7 +25,12 @@ object SysConfigLoader {
           } else {
             new PropertiesLoader(resources)
           }
-          SysConfigImpl.load(List(propertiesLoader, new ZooKeeperLoader(zkPath)))
+          val config = mutable.ListBuffer[ConfigLoader]()
+          config += propertiesLoader
+          if (!StringUtils.hasText(zkPath)) {
+            config += new ZooKeeperLoader(zkPath)
+          }
+          SysConfigImpl.load(config.toList)
         }
       }
       INITIALIZED.set(true)
