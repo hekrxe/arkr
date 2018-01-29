@@ -92,6 +92,7 @@ class LinkConfig extends ApplicationListener[ApplicationReadyEvent] {
   @OnConnect
   def onConnect(client: SocketIOClient): Unit = {
     logger.info("onConnect: " + JSON.toJSONString(client, false))
+    client.sendEvent("hello", "word")
   }
 
   @OnDisconnect
