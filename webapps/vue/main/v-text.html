@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+v-text : 注入文本并 替换原来的值
+-->
+<div id="app">
+    <p>{{msg}}</p>
+    <p v-text="msg">asdasd</p>
+    <p v-html="html"></p>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    let v = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello world!',
+            html: '<input type="date"><input type="color">'
+        }
+    });
+</script>
+
+</body>
+</html>
