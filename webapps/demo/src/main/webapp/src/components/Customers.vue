@@ -1,8 +1,6 @@
 <template>
   <div class="customers ">
-<!--
-    <h2 class="page-header"></h2>
--->
+    <Alert v-if="alert" v-bind:message="alert"/>
     <table class="table table-striped table-hover">
       <caption>Customers</caption>
       <thead>
@@ -18,7 +16,9 @@
         <td>{{customer.name}}</td>
         <td>{{customer.phone}}</td>
         <td>{{customer.email}}</td>
-        <td>编辑</td>
+        <td>
+          <router-link class="btn btn-default" v-bind:to="'/customer/'+customer.id">详情</router-link>
+        </td>
       </tr>
       </tbody>
     </table>
@@ -26,13 +26,17 @@
 </template>
 
 <script>
+  import Alert from './Alert'
+
   export default {
     name: "customers",
     data() {
       return {
-        customers: []
+        customers: [],
+        alert: ''
       }
     },
+    components: {Alert},
     methods: {
       fetchCustomers() {
         this.$http.get("http://localhost:3000/users").then(function (response) {
@@ -41,6 +45,13 @@
       }
     },
     created() {
+      this.fetchCustomers()
+    },
+    updated() {
+      let alert = this.$route.query.alert;
+      if (alert) {
+        this.alert = alert
+      }
       this.fetchCustomers()
     }
   }

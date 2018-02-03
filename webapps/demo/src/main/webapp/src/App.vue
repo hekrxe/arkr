@@ -1,20 +1,5 @@
 <template>
   <div id="app">
-    <!-- <nav class="navbar navbar-default">
-       <div class="container">
-         <div class="navbar-header">
-           <div class="navbar-brand">Project name</div>
-         </div>
-         <div class="collapse navbar-collapse">
-           <ul class="nav navbar-nav">
-             <li><router-link to="/about">About</router-link> </li>
-             <li><router-link to="/customers">Customer</router-link></li>
-           </ul>
-           <a class="nav navbar-nav navbar-right" href="#">LoginOut</a>
-         </div>
-       </div>
-     </nav>-->
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -35,8 +20,7 @@
           <ul class="nav nav-sidebar">
             <li><router-link to="/about">About</router-link> </li>
             <li><router-link to="/customers">Customer</router-link></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li><router-link to="/add">Add</router-link></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
