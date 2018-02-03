@@ -9,7 +9,7 @@
     <father></father>
 </div>
 
-<script src="../js/vue.js"></script>
+<script src="../lib/js/vue.js"></script>
 <script>
 
     // 1 子组件构造器

@@ -11,7 +11,7 @@
     <com-name></com-name>
 </div>
 
-<script src="../js/vue.js"></script>
+<script src="../lib/js/vue.js"></script>
 <script>
     // 1 创建组件构造器
     let Profile = Vue.extend({

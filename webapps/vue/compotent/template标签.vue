@@ -19,7 +19,7 @@
     </div>
 </template>
 
-<script src="../js/vue.js"></script>
+<script src="../lib/js/vue.js"></script>
 <script>
 
     Vue.component('tmp', {

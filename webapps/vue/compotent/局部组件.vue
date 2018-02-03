@@ -10,7 +10,7 @@
     <com-name-color></com-name-color>
 </div>
 
-<script src="../js/vue.js"></script>
+<script src="../lib/js/vue.js"></script>
 <script>
 
     // 1 创建组件构造器

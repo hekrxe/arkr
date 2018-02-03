@@ -26,7 +26,7 @@
     </div>
 </template>
 
-<script src="../js/vue.js"></script>
+<script src="../lib/js/vue.js"></script>
 <script>
     // 子组件的一个实例
     let ChildTitle = Vue.extend({
