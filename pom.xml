@@ -15,6 +15,7 @@
         <module>provider</module>
         <module>service</module>
         <module>webapps</module>
+        <module>spring</module>
     </modules>
 
     <properties>
