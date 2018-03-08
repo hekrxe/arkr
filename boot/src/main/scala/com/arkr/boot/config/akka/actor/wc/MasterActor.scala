@@ -29,7 +29,8 @@ private[akka] class MasterActor extends Actor {
   private var workCount = 0
   private var workReceive = 0
 
-  private val list = mutable.ListBuffer[(String, Int)]()
+  private val list =
+    mutable.ListBuffer[(String, Int)]()
 
   override def receive: Receive = {
     case Start(file) =>
