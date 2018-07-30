@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>demo</module>
-        <module>vue</module>
     </modules>
 
 
