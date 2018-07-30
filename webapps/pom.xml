@@ -12,7 +12,6 @@
     <artifactId>webapps</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>vue</module>
         <module>demo</module>
     </modules>
 
